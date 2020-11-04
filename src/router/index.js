@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AddSmoothie from '../components/AddSmoothie.vue'
 import Editsmoothie from '../components/EditSmoothie'
+import Signup from '../components/auth/Signup.vue'
+import Login from '../components/auth/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/edit-smoothie/:smoothie_slug',
     name: 'Editsmoothie',
     component: Editsmoothie
+  },
+  {
+    path: '/Signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/about',

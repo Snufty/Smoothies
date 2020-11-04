@@ -27,6 +27,7 @@
 <script>
 
 import db from '../firebase/init'
+import firebase from 'firebase'
 
 export default {
   name: 'Home',
@@ -57,6 +58,9 @@ export default {
         this.smoothies.push(smoothie)
       })
     })
+  },
+  mounted(){
+    console.log(firebase.auth().currentUser)
   }
 }
 </script>
