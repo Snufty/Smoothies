@@ -12,18 +12,20 @@
       <v-spacer></v-spacer>
 
     <router-link :to="{name: 'Signup'}">
-      <v-btn color="pink" class="ma-1">
+      <v-btn v-if="!user" color="pink" class="ma-1">
         <p class="ma-0" right>Sign Up</p>
       </v-btn>
     </router-link>
 
     <router-link :to="{name: 'Login'}">
-      <v-btn color="pink" class="ma-1">
+      <v-btn v-if="!user" color="pink" class="ma-1">
         <p class="ma-0" right>Login</p>
       </v-btn>
     </router-link>
 
-    <v-btn color="pink" class="ma-1" @click="logout">
+    <li v-if="user">{{user.email}}</li>
+
+    <v-btn v-if="user" color="pink" class="ma-1" @click="logout">
       <p class="ma-0">Logout</p>
     </v-btn>
 
@@ -44,16 +46,26 @@ import firebase from 'firebase'
   export default {
     data(){
       return {
-
+        user: null
       }
     },
     methods: {
       logout(){
         firebase.auth().signOut()
         .then(()=>{
-          this.$router.push({ name: 'Signup'})
+          this.$router.push({ name: 'Home'})
         })
       }
+    },
+    created(){
+      //let user = firebase.auth().currentUser
+      firebase.auth().onAuthStateChanged((user => {
+        if(user){
+          this.user = user
+        } else {
+          this.user = null
+        }
+      }))
     }
 }
 </script>
@@ -67,5 +79,10 @@ import firebase from 'firebase'
 #filler {
   height: 100%;
   width: 100px
+}
+
+li {
+  list-style: none;
+  margin-right: 10px;
 }
 </style>

@@ -5,6 +5,7 @@ import AddSmoothie from '../components/AddSmoothie.vue'
 import Editsmoothie from '../components/EditSmoothie'
 import Signup from '../components/auth/Signup.vue'
 import Login from '../components/auth/Login.vue'
+//import firebase from 'firebase'
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/AddSmoothie',
@@ -34,14 +35,6 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
 ]
 
 const router = new VueRouter({
@@ -51,3 +44,4 @@ const router = new VueRouter({
 })
 
 export default router
+
