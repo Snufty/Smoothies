@@ -32,7 +32,7 @@
     <div id="filler"></div>
       
       <router-link :to="{name: 'AddSmoothie'}">
-        <v-btn fab color="pink" class="mr-7" absolute right bottom>
+        <v-btn v-if="user" fab color="pink" class="mr-7" absolute right bottom>
           <v-icon>mdi-plus</v-icon>
         </v-btn>
       </router-link>
@@ -53,7 +53,7 @@ import firebase from 'firebase'
       logout(){
         firebase.auth().signOut()
         .then(()=>{
-          this.$router.push({ name: 'Home'})
+          this.$router.push({ name: 'Login'})
         })
       }
     },
